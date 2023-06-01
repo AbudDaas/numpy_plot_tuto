@@ -23,7 +23,7 @@ b = 3
 
 # y_pos = np.sqrt(r**2 - (x-x0)**2) + y0 
 #y_pos = y0 + np.sqrt(b**2(a**2-(x-x0)**2) )
-y_pos = y0+ np.sqrt((1-((x-x0)/b)**2)) 
+y_pos = y0+ np.sqrt((1-((x-x0)/b)**2)+y0**2/a**2) 
 y_neg = - y_pos
 
 plt.xlabel("X-Axis")
