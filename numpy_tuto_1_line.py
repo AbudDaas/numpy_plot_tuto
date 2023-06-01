@@ -67,7 +67,7 @@ a = m
 y = m * (x - x0) + y0
 """
 x_ = np.arange(0, 10)
-a = 3
+a = 2
 b = 2
 y_ = a * x_ + b
 
