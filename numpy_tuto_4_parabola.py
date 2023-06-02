@@ -22,12 +22,13 @@ y0 = 0
 a = 1
 b = 3
 
-# y_pos = np.sqrt(r**2 - (x-x0)**2) + y0 
-#y_pos = y0 + np.sqrt(b**2(a**2-(x-x0)**2) )
-y_pos =np.sqrt(4*a*x)
+# a*x**2+b*x*y+c*y**2+d*x+e*y+f=0
+y_pos = y0 + np.sqrt(4*a*(x-x0))
 y_neg = - y_pos
-x_pos = np.sqrt(-4*a*x)
+
+x_pos = x0 + np.sqrt(-4*a*(x-x0))
 x_neg = -x_pos
+
 plt.xlabel("X-Axis")
 plt.ylabel("Y-Axis")
 

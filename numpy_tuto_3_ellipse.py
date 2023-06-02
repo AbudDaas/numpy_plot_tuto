@@ -18,22 +18,24 @@ x0 = 0
 y0 = 0
 # p0 = (x0, y0)
 
-a = 5
-b = 3
+a = 7
+b = 2
 
-# y_pos = np.sqrt(r**2 - (x-x0)**2) + y0 
-#y_pos = y0 + np.sqrt(b**2(a**2-(x-x0)**2) )
-y_pos = y0+ np.sqrt((1-((x-x0)/b)**2)+y0**2/a**2) 
-y_neg = - y_pos
+# y = y0 + ((a*b)**2 - a**2 * (x-x0))/b**2 
+y_pos = y0 + np.sqrt(b**2 * (1 - ((x - x0)**2 / a**2)))
+y_neg = -y_pos
+
 
 plt.xlabel("X-Axis")
 plt.ylabel("Y-Axis")
 
-plt.xlim(-5, 5)
-plt.ylim(-5, 5)
+plt.xlim(-10, 10)
+plt.ylim(-10, 10)
 
+# plt.plot(x, y_neg, color='g')
 plt.plot(x, y_pos, color='g')
 plt.plot(x, y_neg, color='g')
+
 
 plt.scatter(x0, y0)
 
