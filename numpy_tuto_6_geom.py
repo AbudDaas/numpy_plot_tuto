@@ -9,7 +9,12 @@ class geom:
         """
         self.x0 = x0
         self.y0 = y0
-        self.x = np.arange(-10, 11, 0.1)
+        self.x = np.arange(-10, 11, 0.01)
+
+    def line(self, m):
+        """ 
+        """
+        return  m * (self.x - self.x0) + self.y0
 
     def ellipse(self, a, b):
         """ 
@@ -25,7 +30,7 @@ class geom:
         """
         """
         c = a * self.x0**2 + self.y0  # constant term
-        return a * (self.x - self.x0)**2 + b * (self.x - self.x0) + c
+        return np.sqrt(-4*a*(self.x - self.x0)) + self.y0
     
     def parabola2(self, a, flag=0):
         """
@@ -50,29 +55,40 @@ class geom:
         """
         if(shape=="circle"):
             ## TODO: 5 ---> kwrgs[0]
-            y_pos  = self.circle(5)
+            r = 5
+            y_pos  = self.circle(r)
             ## 5 ---> kwrgs[0]
-            plt.legend(["p0 = (x0 ={}, y0 = {})".format(self.x0, self.y0), "radius={}".format(5)], loc="lower right")
+            plt.legend(["p0 = (x0 ={}, y0 = {})".format(self.x0, self.y0), "radius={}".format(r)], loc="lower right")
 
         elif(shape=="line"):
+            y_pos = self.line(1)
             ## TODO
-            pass
+            plt.legend(["p0 = (x0 ={}, y0 = {})".format(self.x0, self.y0), "slope={}".format(1)])
+            
 
         elif(shape=="ellipse"):
+            y_pos = self.ellipse(6, 14)
             ## TODO
-            pass
+            plt.legend(["p0= (x0 ={}, y0 = {})".format(self.x0, self.y0), "slope={}".format(6, 14)])
+            
 
         elif(shape=="parabola"):
+            y_pos = self.parabola(1, 3)
             ## TODO
-            pass
-
+            plt.legend(["p0 = (x0 = {}, y0 = {})".format(self.x0, self.y0), "slope ={}".format(1, 3)])
+            
+        elif(shape == "parabola2"):
+            y_pos =self.parabola2(2, 1)
+            plt.legend(["p0 = (x0 = {}, y0 = {})".format(self.x0, self.y0), "slope = {}".format(2, 1)])
         elif(shape=="hyperpola"):
+            y_pos = self.hyperpola(1, 2)
             ## TODO
-            pass
+            plt.legend(["p0 = (x0 ={}, y0 = {})".format(self.x0, self.y0), "slope = {}".format(1, 2)])
 
         else:
             print("shape {} is not defined!!".format(shape))
         
+       
         y_neg = - y_pos
 
         plt.xlabel("X-Axis")
@@ -82,7 +98,10 @@ class geom:
         plt.ylim(-20, 20)
 
         plt.plot(self.x, y_pos, color='g')
-        plt.plot(self.x, y_neg, color='g')
+        if(shape!='line'):
+            plt.plot(self.x, y_neg, color='g')
+        elif(shape!='parabola'):
+            plt.plot(self.x, y_neg, color='g')
 
         plt.scatter(self.x0, self.y0)
         plt.grid()
@@ -90,7 +109,7 @@ class geom:
 if __name__=="__main__":
     try:
         geom_ = geom(x0=0, y0=0)
-        geom_.visualize(shape='circle')
+        geom_.visualize(shape='hyperpola')
         plt.show()
 
     except Exception as e: 
