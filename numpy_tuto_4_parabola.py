@@ -26,8 +26,8 @@ b = 3
 y_pos = y0 + np.sqrt(4*a*(x-x0))
 y_neg = - y_pos
 
-x_pos = x0 + np.sqrt(-4*a*(x-x0))
-x_neg = -x_pos
+# x_pos = x0 + np.sqrt(-4*a*(x-x0))
+# x_neg = -x_pos
 
 plt.xlabel("X-Axis")
 plt.ylabel("Y-Axis")
@@ -37,8 +37,8 @@ plt.ylim(-20, 20)
 
 plt.plot(x, y_pos, color='g')
 plt.plot(x, y_neg, color='g')
-plt.plot(x, x_pos, color='g')
-plt.plot(x, x_neg, color='g')
+# plt.plot(x, x_pos, color='g')
+# plt.plot(x, x_neg, color='g')
 
 plt.scatter(x0, y0)
 
